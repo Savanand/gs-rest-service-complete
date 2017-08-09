@@ -1,0 +1,3 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,Latency,IdleTime,Connect
+1502304344679,261,Register Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused (Connection refused),Number of Users 1-1,text,false,Test failed: code expected to contain /200/,2058,0,1,1,0,0,260
+1502304346561,3,Auth Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused (Connection refused),Number of Users 1-1,text,false,Test failed: code expected to contain /200/,2058,0,1,1,0,0,3
