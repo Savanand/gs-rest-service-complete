@@ -26,7 +26,7 @@
 	
 	<!-- call all tasks in this sequence -->
 	<target name="all"
-			depends="clean,show-test-properties,run,generate-report"/>
+			depends="clean,show-test-properties,download-plugin-manager,install-plugins,run,generate-report"/>
 	
 	<!-- clean project by removing all the temp files -->
 	<target name="clean">
@@ -119,9 +119,8 @@
 	<target name="generate-chart">
 		<ac:for param="reportType" list="LatenciesOverTime,TimesVsThreads,ResponseTimesOverTime,ThreadsStateOverTime,TransactionsPerSecond,ResponseTimesPercentiles,ResponseTimesDistribution">
 			  <sequential>
-					<exec executable="cmd">
-						  <arg value="/c"/>
-						  <arg value="${jmeter.home}/bin/JMeterPluginsCMD"/>
+					<exec executable="/bin/sh">
+						  <arg value="${jmeter.home}/bin/JMeterPluginsCMD.sh"/>
 						  <arg value="--tool"/>
 						  <arg value="Reporter"/>
 						  <arg value="--generate-png"/>
@@ -157,9 +156,8 @@
 
 	<!-- Installs all the required plugins -->
 	<target name="install-plugins" depends="download-plugin-manager">
-		  <exec executable="cmd">
-			<arg value="/c"/>
-			<arg value="${jmeter.home}/bin/PluginsManagerCMD"/>
+		  <exec executable="/bin/sh">
+			<arg value="${jmeter.home}/bin/PluginsManagerCMD.sh"/>
 			<arg value="install"/>
 			<arg value="${plugins.list}"/>
 		  </exec>
