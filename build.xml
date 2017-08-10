@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="Ant_jmeter_project" basedir=".">
+<project name="Ant_jmeter_project" basedir="." xmlns:ac="antlib:net.sf.antcontrib">
 
 	<description>Testing Jmeter Ant intergration</description>
 
