@@ -111,7 +111,7 @@
 		  </java>	
 	</target>
 <!-- Generates charts through commandline options -->
-	<taskdef resource="net/sf/antcontrib/antlib.xml">
+	<taskdef uri="antlib:net.sf.antcontrib" resource="net/sf/antcontrib/antlib.xml">
 	    <classpath>
 	    	<pathelement location="${lib.dir}/ant-contrib-1.0b3.jar"/>
 	  	</classpath>
