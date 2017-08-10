@@ -26,7 +26,7 @@
 	
 	<!-- call all tasks in this sequence -->
 	<target name="all"
-			depends="clean,show-test-properties,download-plugin-manager,install-plugins,run,generate-report"/>
+			depends="clean,show-test-properties,download-plugin-manager,install-plugins,run,generate-report,generate-chart"/>
 	
 	<!-- clean project by removing all the temp files -->
 	<target name="clean">
