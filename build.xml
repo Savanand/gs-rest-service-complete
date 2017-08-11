@@ -107,19 +107,11 @@
           	<jvmarg value="${jvm.arg}"/> <!-- modify as you wish -->
 			
 			<!-- Force suitable defaults -->
-<!-- 			<property name="jmeter.save.saveservice.output_format" value="csv"/>
-			<property name="jmeter.save.saveservice.assertion_results" value="all"/>
-			<property name="jmeter.save.saveservice.thread_counts" value="true"/>
-			<property name="jmeter.save.saveservice.bytes" value="true"/>
-			<property name="jmeter.save.saveservice.response_data.on_error" value="true"/>
-
- -->
-            <property name="jmeter.save.saveservice.output_format" value="xml"/>
+	    <property name="jmeter.save.saveservice.output_format" value="xml"/>
             <property name="jmeter.save.saveservice.assertion_results" value="all"/>
             <property name="jmeter.save.saveservice.bytes" value="true"/>
             <property name="file_format.testlog" value="${format}"/>
-            <property name="jmeter.save.saveservice.bytes" value="true"/>
-            <property name="jmeter.save.saveservice.response_data.on_error" value="true"/>
+            <property name="jmeter.save.saveservice.response_data.on_error" value="${funcMode}"/>
 
             <property name="threadgroup.count" value="${threadgroup.count}"/>
 			<property name="threadgroup.rampup" value="${threadgroup.rampup}"/>
