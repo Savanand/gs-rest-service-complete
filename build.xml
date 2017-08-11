@@ -139,6 +139,24 @@
 			  </sequential>
 		</ac:for>
 	</target>
+	<target name="xslt-report" depends="_message_xalan,clean,show-test-properties">
+	<tstamp>
+		<format property="report.datestamp" pattern="yyyy/MM/dd HH:mm"/>
+	</tstamp>
+	<xslt
+	classpathref="xslt.classpath"
+	force="true"
+	in="${test.plan.path}"
+	out="${test.report.path}/test.html"
+	style="${jmeter.home}/extras/jmeter-results-detail-report_21.xsl">
+		<param name="showData" expression="${show-data}"/>
+		<param name="showData" expression="${show-data}"/>
+		<param name="titleReport" expression="${report.title}"/>
+		<param name="dateReport" expression="${report.datestamp}"/>
+	</xslt>
+</target>
+
+
 	
 	
 	<!-- Downloads JMeter Plugins Manager/CMDRunner jar files & Places them in appropriate folders -->
