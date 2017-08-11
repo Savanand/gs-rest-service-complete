@@ -82,7 +82,8 @@
     
     <target name="all" depends="clean, run,report"/>
     <target name="clean">
-	     <delete dir="${testpath}/result/Test.jtl"/>
+	     <delete dir="${testpath}/result"/>
+   	     <delete dir="${testpath}/log"/>
 	</target>
     <target name="run">
         <echo>funcMode = ${funcMode}</echo>
