@@ -39,11 +39,12 @@
         -Djmeter.home=.. - path to JMeter home directory (defaults to parent of this build file)
         -Dreport.title="My Report" - title for html report (default is 'Load Test Results')
     </description>
-    
-    <property name="testpath" value="${basedir}"/>
+    <property file="build.properties" />
     <property environment="env" />
 	<property name="jmeter.home" value="${env.JMETER_HOME}"/>
 	
+    <property name="testpath" value="${basedir}"/>
+   
     <property name="report.title" value="Load Test Results"/>
     
     <!-- Name of test (without .jmx) -->
@@ -83,14 +84,18 @@
     <target name="all" depends="clean, run,report"/>
     <target name="clean">
 	     <delete dir="${testpath}/result"/>
+	     <delete dir="${testpath}/log"/>
 	</target>
     <target name="run">
         <echo>funcMode = ${funcMode}</echo>
+        <mkdir  dir="${testpath}/result"/>
+        <mkdir  dir="${testpath}/log"/>
         <delete file="${testpath}/${test}.html"/>
         <jmeter
             jmeterhome="${jmeter.home}"
             testplan ="${testpath}/test/${test}.jmx"
-            resultlog="${testpath}/result/${test}.jtl">
+            resultlog="${testpath}/result/${test}.jtl"
+            jmeterlogfile="${testpath}/log/jmeter.log">
        
         <!--
             <jvmarg value="-Xincgc"/>
@@ -99,11 +104,14 @@
             <jmeterarg value="-qextra.properties"/>
         -->
             <!-- Force suitable defaults -->
-            <property name="jmeter.save.saveservice.output_format" value="xml"/>
-            <property name="jmeter.save.saveservice.assertion_results" value="all"/>
-            <property name="jmeter.save.saveservice.bytes" value="true"/>
-            <property name="file_format.testlog" value="${format}"/>
-            <property name="jmeter.save.saveservice.response_data.on_error" value="${funcMode}"/>
+          	<jvmarg value="${jvm.arg}"/> <!-- modify as you wish -->
+			
+			<!-- Force suitable defaults -->
+			<property name="jmeter.save.saveservice.output_format" value="csv"/>
+			<property name="jmeter.save.saveservice.assertion_results" value="all"/>
+			<property name="jmeter.save.saveservice.thread_counts" value="true"/>
+			<property name="jmeter.save.saveservice.bytes" value="true"/>
+			<property name="jmeter.save.saveservice.response_data.on_error" value="true"/>
 
 
 
